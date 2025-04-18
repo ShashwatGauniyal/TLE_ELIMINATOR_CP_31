@@ -47,30 +47,38 @@ void fast_io() {
     cout.tie(0);
 }
 
-int main()
-{
+// Solve function
+void solve() {
+    // Add your logic here
+    string s;
+    cin >> s;
+    int n = s.size();
+
+    int count_of_zeros = 0;
+    int count_of_ones = 0;
+
+    for (int i = 0; i < n; i++) {
+        if (s[i] == '0') {
+            count_of_zeros++;
+        } else {
+            count_of_ones++;
+        }
+    }
+    int operations = min(count_of_zeros, count_of_ones);
+    if(operations % 2 == 0) {
+        cout << "NET" << endl;
+    } else {
+        cout << "DA" << endl;
+    }
+}
+
+// Main Function
+int main() {
     fast_io();
-    long long t;
-    cin >> t;
-    while (t--)
-    {
-        long long n, k;
-        cin >> n >> k;
-        string s;
-        cin >> s;
- 
-        vector<int> frequency_of_characters(26, 0);
-        for (int i = 0; i < n; i++) // n
-            frequency_of_characters[s[i] - 'a']++;
- 
-        long long odd_frequency = 0;
-        for (int i = 0; i < 26; i++) // 26
-            odd_frequency += frequency_of_characters[i] % 2;
- 
-        if (odd_frequency > k + 1)
-            cout << "NO" << endl;
-        else
-            cout << "YES" << endl;
+    int tc = 1;
+    cin >> tc;
+    for (int t = 1; t <= tc; t++) {
+        solve();
     }
     return 0;
 }

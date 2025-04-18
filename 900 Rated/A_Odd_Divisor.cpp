@@ -47,30 +47,40 @@ void fast_io() {
     cout.tie(0);
 }
 
-int main()
-{
-    fast_io();
-    long long t;
-    cin >> t;
-    while (t--)
+// Solve function
+void solve(){
+    ll n;
+    cin >> n;
+
+    if(n==3){
+        cout << "YES" << endl;
+        return;
+    }
+    if(n<4){
+        cout << "NO" << endl;
+        return;
+    }
+
+    while (n >=3)
     {
-        long long n, k;
-        cin >> n >> k;
-        string s;
-        cin >> s;
- 
-        vector<int> frequency_of_characters(26, 0);
-        for (int i = 0; i < n; i++) // n
-            frequency_of_characters[s[i] - 'a']++;
- 
-        long long odd_frequency = 0;
-        for (int i = 0; i < 26; i++) // 26
-            odd_frequency += frequency_of_characters[i] % 2;
- 
-        if (odd_frequency > k + 1)
-            cout << "NO" << endl;
-        else
+        if(n%2 != 0){
             cout << "YES" << endl;
+            return;
+        }
+        n /= 2;
+    }
+    cout<< "NO" << endl;
+    
+}
+
+
+// Main Function
+int main() {
+    fast_io();
+    int tc = 1;
+    cin >> tc;
+    for (int t = 1; t <= tc; t++) {
+        solve();
     }
     return 0;
 }
